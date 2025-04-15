@@ -156,6 +156,21 @@ const SpotlightManagement = () => {
           />
         </div>
 
+        <div className="mb-6">
+          <label htmlFor="productId" className="block text-sm font-medium text-text mb-2">
+            Product ID
+          </label>
+          <input
+            type="url"
+            id="productId"
+            name="productId"
+            value={spotlight.productId}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text"
+            placeholder="Product ID"
+          />
+        </div>
+
         <div className="flex justify-end">
           <button
             type="submit"

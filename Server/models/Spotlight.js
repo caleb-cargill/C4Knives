@@ -11,6 +11,7 @@ const spotlightSchema = new mongoose.Schema({
   },
   imageUrl: String,
   videoUrl: String,
+  productId: String,
   updatedAt: {
     type: Date,
     default: Date.now
