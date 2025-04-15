@@ -1,0 +1,24 @@
+{
+  "name": "c4knives",
+  "version": "1.0.0",
+  "description": "C4 Knives - Custom knife shop MERN stack application",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd Server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd ../Server && npm install"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "node",
+    "mongodb",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
