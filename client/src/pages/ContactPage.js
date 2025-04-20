@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { contactService } from '../utils/api';
 import { useLocation } from 'react-router-dom';
+import { metadataService } from '../utils/api';
 
 const ContactPage = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const ContactPage = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [metadata, setMetadata] = useState(null);
 
   // Use state parameter to pre-populate message if product is specified
   useEffect(() => {
@@ -24,6 +26,21 @@ const ContactPage = () => {
       }));
     }
   }, [location.state]);
+
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        console.log('Fetching metadata...');
+        const response = await metadataService.get();
+        console.log('Metadata response:', response);
+        setMetadata(response.data);
+      } catch (err) {
+        console.error('Error fetching metadata:', err);
+        setErrors('Failed to load contact information');
+      }
+    };
+    fetchMetadata();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -214,7 +231,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold mb-2 text-text">Email</h3>
-              <p className="text-muted">info@c4knives.com</p>
+              <p className="text-muted">{metadata?.email || 'info@c4knives.com'}</p>
             </div>
             
             <div className="text-center">
@@ -224,7 +241,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold mb-2 text-text">Phone</h3>
-              <p className="text-muted">(555) 123-4567</p>
+              <p className="text-muted">{metadata?.phone || '(555) 123-4567'}</p>
             </div>
             
             <div className="text-center">
@@ -235,7 +252,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold mb-2 text-text">Location</h3>
-              <p className="text-muted">Salt Lake City, UT</p>
+              <p className="text-muted">{metadata?.address || 'Salt Lake City, UT'}</p>
             </div>
           </div>
         </div>
