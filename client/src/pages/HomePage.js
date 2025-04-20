@@ -129,8 +129,11 @@ const HomePage = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Custom Handcrafted Knives
             </h1>
-            <p className="text-xl mb-8">
-              Precision engineered blades for collectors and professionals.
+            <p className="text-xl mb-2">
+              Precision engineered blades for collectors and professionals. 
+            </p>
+            <p className="text-lg mb-8">
+              Sheaths hand-tailored by <a href="https://www.facebook.com/Eaglesgrip" target="_blank" className="font-bold underline hover:text-complement">Eaglesgrip Leatherwork</a>.          
             </p>
             <Link 
               to="/products" 
