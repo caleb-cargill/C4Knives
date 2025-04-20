@@ -141,7 +141,7 @@ const ContactPage = () => {
                   className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
                     errors.name ? 'border-danger' : 'border-muted'
                   }`}
-                  placeholder="John Doe"
+                  placeholder="Name"
                 />
                 {errors.name && (
                   <p className="text-danger text-sm mt-1">{errors.name}</p>
@@ -161,7 +161,7 @@ const ContactPage = () => {
                   className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
                     errors.email ? 'border-danger' : 'border-muted'
                   }`}
-                  placeholder="john@example.com"
+                  placeholder="Email"
                 />
                 {errors.email && (
                   <p className="text-danger text-sm mt-1">{errors.email}</p>
