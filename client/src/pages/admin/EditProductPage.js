@@ -11,7 +11,8 @@ const EditProductPage = () => {
     description: '',
     price: '',
     imageUrl: '',
-    tags: []
+    tags: [],
+    isCurrentlyAvailable: false,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -206,6 +207,24 @@ const EditProductPage = () => {
                 </span>
               ))}
             </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Is Currently Available
+            </label>
+            <div className="p-4">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="isCurrentlyAvailable"
+                    checked={product.isCurrentlyAvailable}
+                    onChange={handleChange}
+                    className="w-3 h-3 px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text"
+                  />
+                  <span>{product.isCurrentlyAvailable ? 'Available' : 'Unavailable'}</span>
+                </label>
+              </div>
           </div>
 
           <div className="flex gap-4">

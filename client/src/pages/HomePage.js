@@ -12,6 +12,7 @@ const HomePage = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [totalKnives, setTotalKnives] = useState(0);
+  const [availableKnives, setAvailableKnives] = useState(0);
   const [knifeCounter, setKnifeCounter] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,6 +31,7 @@ const HomePage = () => {
         const productsRes = await productService.getAll();
         setFeaturedProducts(productsRes.data.slice(0, 3));
         setTotalKnives(productsRes.data.length);
+        setAvailableKnives(productsRes.data.filter(p => p.isCurrentlyAvailable).length);
 
         // Get knife counter
         const metadata = await metadataService.get();
@@ -159,7 +161,7 @@ const HomePage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h2 className="text-3xl font-bold mb-8 text-text">Our Legacy</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <p className="text-5xl font-bold text-primary mb-4">{knifeCounter}+</p>
                 <p className="text-xl text-muted">Total Knives Crafted</p>
@@ -167,6 +169,10 @@ const HomePage = () => {
               <div>
                 <p className="text-5xl font-bold text-primary mb-4">{totalKnives}+</p>
                 <p className="text-xl text-muted">Unique Designs Created</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-primary mb-4">{availableKnives}</p>
+                <p className="text-xl text-muted">Blades Available</p>
               </div>
             </div>
           </motion.div>

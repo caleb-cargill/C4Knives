@@ -13,6 +13,11 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  isCurrentlyAvailable: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   imageUrl: {
     type: String,
     required: true
