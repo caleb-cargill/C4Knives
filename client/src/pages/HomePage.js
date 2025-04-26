@@ -140,6 +140,13 @@ const HomePage = () => {
               Sheaths hand-tailored by <a href="https://www.facebook.com/Eaglesgrip" target="_blank" className="font-bold underline hover:text-complement">Eaglesgrip Leatherwork</a>.          
             </p>
             <Link 
+              to="/about"
+              className={`w-full bg-primary hover:bg-complement mr-4 text-white font-bold py-3 px-8 rounded-lg transition-colors ${
+                loading ? 'opacity-70 cursor-not-allowed' : ''
+              }`}>
+                About Us
+              </Link>
+            <Link 
               to="/products" 
               className={`w-full bg-primary hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''

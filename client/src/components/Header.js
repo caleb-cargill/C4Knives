@@ -58,6 +58,9 @@ const Header = () => {
           <Link to="/" className={`${isActive('/')} transition-colors`}>
             Home
           </Link>
+          <Link to="/about" className={`${isActive('/about')} transition-colors`}>
+            About
+          </Link>
           <Link to="/products" className={`${isActive('/products')} transition-colors`}>
             Products
           </Link>
@@ -90,6 +93,13 @@ const Header = () => {
               onClick={closeMenu}
             >
               Home
+            </Link>
+            <Link 
+              to="/about" 
+              className={`${isActive('/about')} block py-2 transition-colors`}
+              onClick={closeMenu}
+            >
+              About
             </Link>
             <Link 
               to="/products" 
