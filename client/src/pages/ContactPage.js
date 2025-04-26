@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { contactService } from '../utils/api';
 import { useLocation } from 'react-router-dom';
 import { metadataService } from '../utils/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const ContactPage = () => {
   const location = useLocation();
@@ -158,7 +161,7 @@ const ContactPage = () => {
                   className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
                     errors.name ? 'border-danger' : 'border-muted'
                   }`}
-                  placeholder="Name"
+                  placeholder="e.g., John Smith"
                 />
                 {errors.name && (
                   <p className="text-danger text-sm mt-1">{errors.name}</p>
@@ -178,7 +181,7 @@ const ContactPage = () => {
                   className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
                     errors.email ? 'border-danger' : 'border-muted'
                   }`}
-                  placeholder="Email"
+                  placeholder="e.g., johnsmith@gmail.com"
                 />
                 {errors.email && (
                   <p className="text-danger text-sm mt-1">{errors.email}</p>
@@ -220,40 +223,31 @@ const ContactPage = () => {
           </div>
         )}
         
-        <div className="mt-12 bg-secondary rounded-lg shadow-md p-8">
+        <div className="mt-12 bg-secondary rounded-lg shadow-md p-8 text-center">
           <h2 className="text-2xl font-bold mb-6 text-text">Other Ways to Reach Us</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="bg-background rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-highlight" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <FontAwesomeIcon icon={faEnvelope} className="h-8 w-8 text-highlight" />     
               </div>
               <h3 className="text-lg font-semibold mb-2 text-text">Email</h3>
               <p className="text-muted">{metadata?.email || 'info@c4knives.com'}</p>
-            </div>
-            
+            </div>  
             <div className="text-center">
               <div className="bg-background rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-highlight" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
+                <FontAwesomeIcon icon={faFacebook} className="h-8 w-8 text-highlight" />                
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-text">Phone</h3>
-              <p className="text-muted">{metadata?.phone || '(555) 123-4567'}</p>
-            </div>
-            
+              <h3 className="text-lg font-semibold mb-2 text-text">Facebook</h3>
+              <a href={metadata?.facebook} target='_blank' className="text-muted hover:text-highlight transition-colors">C4 Knives</a>
+            </div>  
             <div className="text-center">
               <div className="bg-background rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-highlight" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                <FontAwesomeIcon icon={faInstagram} className="h-8 w-8 text-highlight" />                
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-text">Location</h3>
-              <p className="text-muted">{metadata?.address || 'Salt Lake City, UT'}</p>
-            </div>
+              <h3 className="text-lg font-semibold mb-2 text-text">Instagram</h3>
+              <a href={metadata?.instagram} target='_blank' className="text-muted hover:text-highlight transition-colors">c4.knives</a>
+            </div>                       
           </div>
         </div>
       </motion.div>

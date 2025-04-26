@@ -163,12 +163,12 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold mb-8 text-text">Our Legacy</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <p className="text-5xl font-bold text-primary mb-4">{knifeCounter}+</p>
-                <p className="text-xl text-muted">Total Knives Crafted</p>
-              </div>
-              <div>
                 <p className="text-5xl font-bold text-primary mb-4">{totalKnives}+</p>
                 <p className="text-xl text-muted">Unique Designs Created</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-primary mb-4">{knifeCounter}+</p>
+                <p className="text-xl text-muted">Total Knives Crafted</p>
               </div>
               <div>
                 <p className="text-5xl font-bold text-primary mb-4">{availableKnives}</p>

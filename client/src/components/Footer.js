@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { metadataService } from '../utils/api';
 
@@ -68,10 +68,6 @@ const Footer = () => {
                 <li className="text-muted">
                   <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                   {metadata?.email || 'info@c4knives.com'}
-                </li>
-                <li className="text-muted">
-                  <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                  {metadata?.phone || '(555) 123-4567'}
                 </li>
                 <li className="text-muted">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
