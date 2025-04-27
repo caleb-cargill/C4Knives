@@ -118,9 +118,11 @@ const ContactPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl font-bold mb-2 text-center text-text">Contact Us</h1>
+        <h1 className="text-3xl font-bold mb-2 text-center text-text">Contact</h1>
         <p className="text-muted mb-8 text-center">
-          Have questions about our knives or want to place a custom order? Reach out to us here.
+          Have questions about my knives or want to place a custom order? Reach out to me here. 
+          At this point in time, knife-making is not a full-time business. However, I'd love to 
+          hear from you and will do my best to get back to you promptly!
         </p>
         
         {submitted ? (
@@ -131,7 +133,7 @@ const ContactPage = () => {
             transition={{ duration: 0.3 }}
           >
             <h2 className="text-xl font-bold mb-2">Message Sent!</h2>
-            <p className="mb-4">Thank you for contacting us. We'll respond to your inquiry as soon as possible.</p>
+            <p className="mb-4">Thank you for contacting me. I'll respond to your inquiry as soon as possible.</p>
             <button
               onClick={() => setSubmitted(false)}
               className="bg-primary hover:bg-highlight hover:text-background text-text font-semibold py-2 px-6 rounded-lg transition-colors"
@@ -201,7 +203,7 @@ const ContactPage = () => {
                   className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
                     errors.message ? 'border-danger' : 'border-muted'
                   }`}
-                  placeholder="Please let us know how we can help you..."
+                  placeholder="Please let me know how I can help you..."
                 ></textarea>
                 {errors.message && (
                   <p className="text-danger text-sm mt-1">{errors.message}</p>
@@ -224,7 +226,7 @@ const ContactPage = () => {
         )}
         
         <div className="mt-12 bg-secondary rounded-lg shadow-md p-8 text-center">
-          <h2 className="text-2xl font-bold mb-6 text-text">Other Ways to Reach Us</h2>
+          <h2 className="text-2xl font-bold mb-6 text-text">Other Ways to Reach Out</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">

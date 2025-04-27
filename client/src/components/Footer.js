@@ -56,7 +56,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="/vault" className="text-muted hover:text-highlight transition-colors">
-                    Knife Vault
+                    Vault
                   </Link>
                 </li>
                 <li>

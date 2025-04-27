@@ -294,7 +294,7 @@ const HomePage = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center text-text">What Our Customers Say</h2>
+          <h2 className="text-3xl font-bold mb-10 text-center text-text">What Customers are Saying</h2>
           
           {/* Search Bar */}
           <div className="max-w-md mx-auto mb-8">
@@ -417,8 +417,10 @@ const HomePage = () => {
           >
             <h2 className="text-3xl font-bold mb-6 text-text">Looking for a Custom Knife?</h2>
             <p className="text-xl text-muted mb-8">
-              Have a specific design in mind? Need a knife tailored to your exact requirements? 
-              We specialize in creating custom knives that perfectly match your vision and needs.
+              Have a specific design in mind? At this time, knife making is a personal hobby, not a full-time business. 
+              My availability to take on custom projects is limited, but I’m always happy to hear your ideas. 
+              If you’re interested in a custom knife, feel free to reach out 
+              — I’ll do my best to respond and let you know what might be possible!
             </p>
             <Link 
               to="/contact" 
