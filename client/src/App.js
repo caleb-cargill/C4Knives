@@ -35,8 +35,8 @@ function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/products/:id" element={<ProductDetailPage />} />
+              <Route path="/vault" element={<ProductsPage />} />
+              <Route path="/vault/:id" element={<ProductDetailPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -44,9 +44,9 @@ function App() {
               {/* Admin Routes - Protected */}
               <Route element={<PrivateRoute />}>
                 <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/admin/products" element={<AdminProductsPage />} />
-                <Route path="/admin/products/edit/:id" element={<EditProductPage />} />
-                <Route path="/admin/products/new" element={<AddProductPage />} />
+                <Route path="/admin/vault" element={<AdminProductsPage />} />
+                <Route path="/admin/vault/edit/:id" element={<EditProductPage />} />
+                <Route path="/admin/vault/new" element={<AddProductPage />} />
                 <Route path="/admin/messages" element={<MessagesPage />} />
                 <Route path="/admin/spotlight" element={<SpotlightManagement />} />
                 <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />

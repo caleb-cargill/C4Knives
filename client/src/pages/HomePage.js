@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { spotlightService, productService, testimonialService, metadataService } from '../utils/api';
 import Product from '../components/Product';
 
 const HomePage = () => {
   const [spotlight, setSpotlight] = useState(null);
-  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [availableProducts, setAvailableProducts] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [filteredTestimonials, setFilteredTestimonials] = useState([]);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -16,6 +16,7 @@ const HomePage = () => {
   const [knifeCounter, setKnifeCounter] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,10 +27,9 @@ const HomePage = () => {
         if (spotlightRes.data) {
           setSpotlight(spotlightRes.data);
         }
-
-        // Get featured products (3 most recent)
+        
         const productsRes = await productService.getAll();
-        setFeaturedProducts(productsRes.data.slice(0, 3));
+        setAvailableProducts(productsRes.data.filter(p => p.isCurrentlyAvailable));
         setTotalKnives(productsRes.data.length);
         setAvailableKnives(productsRes.data.filter(p => p.isCurrentlyAvailable).length);
 
@@ -146,13 +146,24 @@ const HomePage = () => {
               }`}>
                 About Us
               </Link>
+              <button 
+              onClick={() => navigate('/vault', {
+                state: {
+                  showAvailable: true
+                }
+              })}
+              className={`w-auto bg-primary mr-4 hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
+                loading ? 'opacity-70 cursor-not-allowed' : ''
+              }`}>
+              View Available Knives
+            </button>
             <Link 
-              to="/products" 
+              to="/vault" 
               className={`w-full bg-primary hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >
-              View Collection
+              View the Vault
             </Link>
           </motion.div>
         </div>
@@ -234,10 +245,10 @@ const HomePage = () => {
                     Watch Video
                   </Link>
                   <Link 
-                    to={`/products/${spotlight.productId}`} 
+                    to={`/vault/${spotlight.productId}`} 
                     className="bg-olive hover:bg-complement text-text font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
                   >
-                    View Product
+                    View Knife
                   </Link>
                 </div>
               </motion.div>
@@ -246,35 +257,35 @@ const HomePage = () => {
         </section>
       )}
 
-      {/* Featured Products Section */}
+      {/* Available Blades Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center text-text">Featured Products</h2>
+          <h2 className="text-3xl font-bold mb-10 text-center text-text">Available Knives</h2>
           {error ? (
             <p className="text-center text-danger">{error}</p>
-          ) : featuredProducts.length > 0 ? (
+          ) : availableProducts.length > 0 ? (
             <motion.div 
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {featuredProducts.map((product) => (
+              {availableProducts.map((product) => (
                 <Product key={product._id} product={product} />
               ))}
             </motion.div>
           ) : (
-            <p className="text-center text-muted">No featured products available.</p>
+            <p className="text-center text-muted">No blades available.</p>
           )}
           
           <div className="text-center mt-12">
             <Link 
-              to="/products" 
+              to="/vault" 
               className={`w-full bg-primary hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >
-              View All Products
+              View the Vault
             </Link>
           </div>
         </div>

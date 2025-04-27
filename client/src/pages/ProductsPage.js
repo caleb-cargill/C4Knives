@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { productService } from '../utils/api';
 import Product from '../components/Product';
+import { useLocation } from 'react-router-dom';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,14 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
   const [tags, setTags] = useState([]);
+  const [isAvailableSelected, setAvailableSelected] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state && location.state.showAvailable) {
+      setAvailableSelected(true);
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -54,12 +63,17 @@ const ProductsPage = () => {
       
       const matchesTag = selectedTag === '' || 
         (product.tags && product.tags.includes(selectedTag));
+
+      const matchesAvailable = 
+        isAvailableSelected
+        ? product.isCurrentlyAvailable
+        : true;
       
-      return matchesSearch && matchesTag;
+      return matchesSearch && matchesTag && matchesAvailable;
     });
     
     setFilteredProducts(filtered);
-  }, [searchTerm, selectedTag, products]);
+  }, [searchTerm, selectedTag, products, isAvailableSelected]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -67,6 +81,10 @@ const ProductsPage = () => {
 
   const handleTagFilter = (tag) => {
     setSelectedTag(tag === selectedTag ? '' : tag);
+  };
+
+  const handleAvailabilityFilter = (showAvailable) => {
+    setAvailableSelected(showAvailable);
   };
 
   // Animation variants
@@ -156,6 +174,18 @@ const ProductsPage = () => {
             </div>
           </div>
         )}
+
+        <div className="mt-4">
+          <div className="flex flex-wrap gap-2">
+            <button key="isAvailable" onClick={() => handleAvailabilityFilter(!isAvailableSelected)} className={`px-3 py-1 rounded-full text-sm ${
+              isAvailableSelected
+              ? 'bg-primary text-white'
+              : 'bg-complement text-gray-200 hover:bg-gray-600'
+            } transition-colors`}>
+              {isAvailableSelected ? "Show All" : "Show Available"}
+            </button>
+          </div>
+        </div>
       </div>
       
       {error ? (
