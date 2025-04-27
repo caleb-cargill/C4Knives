@@ -17,6 +17,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const images = process.env.REACT_APP_R2_URL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,7 +121,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-cover bg-center text-text py-20 bg-no-repeat" style={{ backgroundImage: "url('https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/473804028_1115350350373131_5327880234059863841_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ujzrOapqUuMQ7kNvwGLLYJY&_nc_oc=AdkLQLeAtisg52dlHcWSLgvy3Xyyp3XEcbQBtJilihkOPz3tDodr0RL7B9rTnP6VnuF_sBcU2Vs9bswPx2O-qprn&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&_nc_gid=RCYi3KCQ2cN8G5vUd56f8g&oh=00_AfGqzxC6D_iaSsMFkZ08NrzdgE_MgjZy5nFuRPUnBxaubg&oe=680E0848')" }}>
+      <section className="relative bg-cover bg-center text-text py-20 bg-no-repeat" style={{ backgroundImage: `url(${images}/HeroBackground-20250427_01.jpg)` }}>
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
 
         <div className="container mx-auto px-4 relative z-10">
