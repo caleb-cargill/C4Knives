@@ -51,3 +51,6 @@ Server/.env
 
 # Documentation
 Documentation/_build/ 
+
+# Seed
+seed.js
