@@ -52,3 +52,6 @@ Server/seed.js
 
 # Documentation
 Documentation/_build/ 
+
+# Seed
+seed.js
