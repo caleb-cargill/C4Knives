@@ -48,6 +48,7 @@ client/.env
 Server/dist/
 Server/build/
 Server/.env
+Server/seed.js
 
 # Documentation
 Documentation/_build/ 

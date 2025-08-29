@@ -23,11 +23,8 @@ const productRoutes = require('./routes/products');
 const spotlightRoutes = require('./routes/spotlight');
 const contactRoutes = require('./routes/contact');
 const testimonialRoutes = require('./routes/testimonials');
-const { router: authRoutes, createInitialAdmin } = require('./routes/auth');
+const { router: authRoutes } = require('./routes/auth');
 const metadataRoutes = require('./routes/metadata');
-
-// Create initial admin account
-createInitialAdmin();
 
 // Define routes
 app.use('/api/products', productRoutes);

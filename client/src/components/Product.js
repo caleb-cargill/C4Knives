@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+const images = process.env.REACT_APP_R2_URL;
+
 const Product = ({ product }) => {
     const itemVariants = {
         hidden: { y: 20, opacity: 0 },
@@ -18,7 +21,7 @@ const Product = ({ product }) => {
                   className="bg-secondary rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                   variants={itemVariants}>
             <img 
-            src={product.imageUrl} 
+            src={`${images}${product.imageUrl}`} 
             alt={product.name} 
             className="w-full h-64 object-cover"
             />

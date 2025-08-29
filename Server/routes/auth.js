@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/Admin');
 const { authMiddleware, JWT_SECRET } = require('../middleware/auth');
@@ -68,26 +67,4 @@ router.get('/me', authMiddleware, async (req, res) => {
   }
 });
 
-// Helper function to create initial admin if needed (to be called on server startup)
-const createInitialAdmin = async () => {
-  try {
-    const adminCount = await Admin.countDocuments();
-    
-    if (adminCount === 0) {
-      const salt = await bcrypt.genSalt(10);
-      const passwordHash = await bcrypt.hash('admin123', salt);
-      
-      const initialAdmin = new Admin({
-        username: 'admin',
-        passwordHash
-      });
-      
-      await initialAdmin.save();
-      console.log('Initial admin account created');
-    }
-  } catch (err) {
-    console.error('Error creating initial admin:', err);
-  }
-};
-
-module.exports = { router, createInitialAdmin }; 
+module.exports = { router }; 

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { productService } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 
+const images = process.env.REACT_APP_R2_URL;
+
 const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -79,7 +81,7 @@ const ProductDetailPage = () => {
             className="h-full"
           >
             <img 
-              src={product.imageUrl} 
+              src={`${images}${product.imageUrl}`} 
               alt={product.name} 
               className="w-full h-full object-cover"
             />
