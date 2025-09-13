@@ -6,7 +6,6 @@ import Product from '../components/Product';
 
 const HomePage = () => {
   const [spotlight, setSpotlight] = useState(null);
-  const [availableProducts, setAvailableProducts] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [filteredTestimonials, setFilteredTestimonials] = useState([]);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -16,7 +15,6 @@ const HomePage = () => {
   const [knifeCounter, setKnifeCounter] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const images = process.env.REACT_APP_R2_URL;
 
   useEffect(() => {
@@ -30,7 +28,6 @@ const HomePage = () => {
         }
         
         const productsRes = await productService.getAll();
-        setAvailableProducts(productsRes.data.filter(p => p.isCurrentlyAvailable));
         setTotalKnives(productsRes.data.length);
         setAvailableKnives(productsRes.data.filter(p => p.isCurrentlyAvailable).length);
 
@@ -143,18 +140,7 @@ const HomePage = () => {
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}>
                 About Us
-              </Link>
-              <button 
-              onClick={() => navigate('/vault', {
-                state: {
-                  showAvailable: true
-                }
-              })}
-              className={`w-auto bg-primary mr-4 hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
-                loading ? 'opacity-70 cursor-not-allowed' : ''
-              }`}>
-              View Available Knives
-            </button>
+            </Link>
             <Link 
               to="/vault" 
               className={`w-full bg-primary hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
@@ -253,44 +239,10 @@ const HomePage = () => {
             </div>
           </div>
         </section>
-      )}
-
-      {/* Available Blades Section */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center text-text">Available Knives</h2>
-          {error ? (
-            <p className="text-center text-danger">{error}</p>
-          ) : availableProducts.length > 0 ? (
-            <motion.div 
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {availableProducts.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-            </motion.div>
-          ) : (
-            <p className="text-center text-muted">No blades available.</p>
-          )}
-          
-          <div className="text-center mt-12">
-            <Link 
-              to="/vault" 
-              className={`w-full bg-primary hover:bg-complement text-white font-bold py-3 px-8 rounded-lg transition-colors ${
-                loading ? 'opacity-70 cursor-not-allowed' : ''
-              }`}
-            >
-              View the Vault
-            </Link>
-          </div>
-        </div>
-      </section>
+      )}      
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-10 text-center text-text">What Customers are Saying</h2>
           
@@ -326,7 +278,7 @@ const HomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="bg-background p-8 rounded-lg shadow-lg"
+                className="bg-secondary p-8 rounded-lg shadow-lg"
               >
                 <div className="flex items-center mb-4">
                   {filteredTestimonials[currentTestimonialIndex].imageUrl && (
@@ -405,7 +357,7 @@ const HomePage = () => {
       </section>
 
       {/* Custom Quote Section */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-3xl mx-auto text-center"

@@ -132,16 +132,16 @@ const ProductDetailPage = () => {
                 Request
               </button>
               <Link 
-                to="/products" 
+                to="/vault" 
                 className="bg-olive hover:bg-complement text-text font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
               >
-                Back to Products
+                Back to Vault
               </Link>
               
               {isAuthenticated && (
                 <div className="flex gap-2">
                   <Link 
-                    to={`/admin/products/edit/${product._id}`} 
+                    to={`/admin/vault/edit/${product._id}`} 
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
                   >
                     Edit

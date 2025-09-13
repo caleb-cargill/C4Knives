@@ -100,7 +100,7 @@ const AdminDashboard = () => {
         <h2 className="text-xl font-bold mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <Link 
-            to="/admin/products/new" 
+            to="/admin/vault/new" 
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-center flex items-center justify-center"
           >
             <svg className="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
           </div>
           <div className="text-3xl font-bold mb-4">{summary.products}</div>
           <Link 
-            to="/admin/products" 
+            to="/admin/vault" 
             className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
           >
             Manage Products

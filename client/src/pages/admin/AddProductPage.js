@@ -15,6 +15,8 @@ const AddProductPage = () => {
   const [error, setError] = useState(null);
   const [newTag, setNewTag] = useState('');
 
+  const images = process.env.REACT_APP_R2_URL;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct(prev => ({
@@ -80,6 +82,14 @@ const AddProductPage = () => {
         )}
         
         <form onSubmit={handleSubmit} className="space-y-6">
+          {product.imageUrl && (
+            <img 
+            src={`${images}${product.imageUrl}`} 
+            alt={product.name} 
+            className="w-full h-full object-cover"
+            />
+          )}
+
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
               Product Name *
@@ -132,7 +142,7 @@ const AddProductPage = () => {
               Image URL *
             </label>
             <input
-              type="url"
+              type="text"
               id="imageUrl"
               name="imageUrl"
               value={product.imageUrl}
@@ -140,18 +150,6 @@ const AddProductPage = () => {
               className="w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text"
               required
             />
-            {product.imageUrl && (
-              <div className="mt-2">
-                <img 
-                  src={product.imageUrl} 
-                  alt="Product preview" 
-                  className="max-h-48 rounded-lg object-cover"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/300x200?text=Invalid+Image+URL';
-                  }}
-                />
-              </div>
-            )}
           </div>
 
           <div>

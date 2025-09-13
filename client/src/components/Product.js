@@ -46,7 +46,7 @@ const Product = ({ product }) => {
             <div className="flex justify-between items-center">
                 <span className="text-highlight font-bold">${product.price.toFixed(2)}</span>
                 <Link 
-                to={`/products/${product._id}`}
+                to={`/vault/${product._id}`}
                 className="bg-olive hover:bg-complement text-text font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
                 >
                 View Details

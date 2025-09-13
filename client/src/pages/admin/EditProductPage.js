@@ -18,6 +18,8 @@ const EditProductPage = () => {
   const [error, setError] = useState(null);
   const [newTag, setNewTag] = useState('');
 
+  const images = process.env.REACT_APP_R2_URL;
+
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
@@ -64,7 +66,7 @@ const EditProductPage = () => {
     e.preventDefault();
     try {
       await productService.update(id, product);
-      navigate('/admin/products');
+      navigate('/admin/vault');
     } catch (err) {
       console.error('Error updating product:', err);
       setError('Failed to update product. Please try again.');
@@ -88,7 +90,7 @@ const EditProductPage = () => {
           {error}
         </div>
         <button
-          onClick={() => navigate('/admin/products')}
+          onClick={() => navigate('/admin/vault')}
           className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
         >
           Back to Products
@@ -108,6 +110,14 @@ const EditProductPage = () => {
         <h1 className="text-3xl font-bold mb-8">Edit Product</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">
+          {product.imageUrl && (
+            <img 
+            src={`${images}${product.imageUrl}`} 
+            alt={product.name} 
+            className="w-full h-full object-cover"
+            />
+          )}
+          
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
               Product Name
@@ -160,7 +170,7 @@ const EditProductPage = () => {
               Image URL
             </label>
             <input
-              type="url"
+              type="text"
               id="imageUrl"
               name="imageUrl"
               value={product.imageUrl}
