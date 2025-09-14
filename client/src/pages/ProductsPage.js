@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { productService } from '../utils/api';
 import Product from '../components/Product';
@@ -98,17 +97,6 @@ const ProductsPage = () => {
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4
-      }
-    }
-  };
-
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -198,7 +186,7 @@ const ProductsPage = () => {
           animate="visible"
         >
           {filteredProducts.map((product) => (
-            <Product product={product} />
+            <Product key={product._id} product={product} />
           ))}
         </motion.div>
       ) : (

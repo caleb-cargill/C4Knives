@@ -3,6 +3,8 @@ const router = express.Router();
 const Testimonial = require('../models/Testimonial');
 const { authMiddleware } = require('../middleware/auth');
 
+const adminRoute = process.env.ADMIN_API_ROUTE;
+
 // @route   GET api/testimonials
 // @desc    Get all testimonials
 // @access  Public
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
 // @route   POST api/testimonials
 // @desc    Create a testimonial
 // @access  Private
-router.post('/', authMiddleware, async (req, res) => {
+router.post(`/${adminRoute}/`, authMiddleware, async (req, res) => {
   try {
     const { name, role, content, rating, imageUrl } = req.body;
     
@@ -42,7 +44,7 @@ router.post('/', authMiddleware, async (req, res) => {
 // @route   PUT api/testimonials/:id
 // @desc    Update a testimonial
 // @access  Private
-router.put('/:id', authMiddleware, async (req, res) => {
+router.put(`/${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
     const { name, role, content, rating, imageUrl } = req.body;
     
@@ -68,7 +70,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
 // @route   DELETE api/testimonials/:id
 // @desc    Delete a testimonial
 // @access  Private
-router.delete('/:id', authMiddleware, async (req, res) => {
+router.delete(`/${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
     const testimonial = await Testimonial.findById(req.params.id);
     if (!testimonial) {

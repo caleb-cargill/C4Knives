@@ -3,6 +3,8 @@ const router = express.Router();
 const Product = require('../models/Product');
 const { authMiddleware } = require('../middleware/auth');
 
+const adminRoute = process.env.ADMIN_API_ROUTE;
+
 // @route   GET api/products
 // @desc    Get all products
 // @access  Public
@@ -40,7 +42,7 @@ router.get('/:id', async (req, res) => {
 // @route   POST api/products
 // @desc    Create a product
 // @access  Private
-router.post('/', authMiddleware, async (req, res) => {
+router.post(`/${adminRoute}/`, authMiddleware, async (req, res) => {
   try {
     const { name, description, price, imageUrl, tags } = req.body;
     
@@ -63,7 +65,7 @@ router.post('/', authMiddleware, async (req, res) => {
 // @route   PUT api/products/:id
 // @desc    Update a product
 // @access  Private
-router.put('/:id', authMiddleware, async (req, res) => {
+router.put(`${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     
@@ -94,7 +96,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
 // @route   DELETE api/products/:id
 // @desc    Delete a product
 // @access  Private
-router.delete('/:id', authMiddleware, async (req, res) => {
+router.delete(`${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     

@@ -17,7 +17,7 @@ const EditProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [newTag, setNewTag] = useState('');
-
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
   const images = process.env.REACT_APP_R2_URL;
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const EditProductPage = () => {
     e.preventDefault();
     try {
       await productService.update(id, product);
-      navigate('/admin/vault');
+      navigate(`/${adminRoute}/vault`);
     } catch (err) {
       console.error('Error updating product:', err);
       setError('Failed to update product. Please try again.');
@@ -90,7 +90,7 @@ const EditProductPage = () => {
           {error}
         </div>
         <button
-          onClick={() => navigate('/admin/vault')}
+          onClick={() => navigate(`/${adminRoute}/vault`)}
           className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
         >
           Back to Products
@@ -246,7 +246,7 @@ const EditProductPage = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate('/admin/products')}
+              onClick={() => navigate(`/${adminRoute}/products`)}
               className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
             >
               Cancel

@@ -3,6 +3,8 @@ const router = express.Router();
 const Metadata = require('../models/Metadata');
 const { authMiddleware } = require('../middleware/auth');
 
+const adminRoute = process.env.ADMIN_API_ROUTE;
+
 // Get all metadata
 router.get('/', async (req, res) => {
   try {
@@ -25,7 +27,7 @@ router.get('/', async (req, res) => {
 });
 
 // Update metadata (admin only)
-router.put('/', authMiddleware, async (req, res) => {
+router.put(`/${adminRoute}/`, authMiddleware, async (req, res) => {
   try {
     let metadata = await Metadata.findOne();
     if (!metadata) {

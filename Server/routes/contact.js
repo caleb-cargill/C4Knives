@@ -3,6 +3,8 @@ const router = express.Router();
 const ContactMessage = require('../models/ContactMessage');
 const { authMiddleware } = require('../middleware/auth');
 
+const adminRoute = process.env.ADMIN_API_ROUTE;
+
 // @route   POST api/contact
 // @desc    Submit a contact message
 // @access  Public
@@ -32,7 +34,7 @@ router.post('/', async (req, res) => {
 // @route   GET api/contact/messages
 // @desc    Get all contact messages
 // @access  Private
-router.get('/messages', authMiddleware, async (req, res) => {
+router.get(`/${adminRoute}/messages`, authMiddleware, async (req, res) => {
   try {
     const messages = await ContactMessage.find().sort({ createdAt: -1 });
     res.json(messages);

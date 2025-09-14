@@ -13,6 +13,7 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -141,7 +142,7 @@ const ProductDetailPage = () => {
               {isAuthenticated && (
                 <div className="flex gap-2">
                   <Link 
-                    to={`/admin/vault/edit/${product._id}`} 
+                    to={`/${adminRoute}/vault/edit/${product._id}`} 
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
                   >
                     Edit

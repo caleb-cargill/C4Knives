@@ -7,7 +7,7 @@ const AdminProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
   const images = process.env.REACT_APP_R2_URL;
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const AdminProductsPage = () => {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Manage Products</h1>
         <Link
-          to="/admin/vault/new"
+          to={`/${adminRoute}/vault/new`}
           className="bg-primary hover:bg-complement text-white font-semibold py-2 px-4 rounded-lg transition-colors"
         >
           Add New Product
@@ -97,7 +97,7 @@ const AdminProductsPage = () => {
               <span className="text-highlight font-bold">${product.price.toFixed(2)}</span>
               <div className="flex gap-2">
                 <Link
-                  to={`/admin/vault/edit/${product._id}`}
+                  to={`/${adminRoute}/vault/edit/${product._id}`}
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
                   Edit

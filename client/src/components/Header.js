@@ -7,6 +7,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const location = useLocation();
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -69,7 +70,7 @@ const Header = () => {
           </Link>
           {isAuthenticated && (
             <>
-              <Link to="/admin" className={`${isActive('/admin')} transition-colors`}>
+              <Link to={`/${adminRoute}`} className={`${isActive(`/${adminRoute}`)} transition-colors`}>
                 Admin
               </Link>
               <button 
@@ -118,8 +119,8 @@ const Header = () => {
             {isAuthenticated && (
               <>
                 <Link 
-                  to="/admin" 
-                  className={`${isActive('/admin')} block py-2 transition-colors`}
+                  to={`/${adminRoute}`} 
+                  className={`${isActive(`/${adminRoute}`)} block py-2 transition-colors`}
                   onClick={closeMenu}
                 >
                   Admin

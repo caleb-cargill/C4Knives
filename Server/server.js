@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
+const adminRoute = process.env.ADMIN_API_ROUTE;
 
 console.log('Allowed Origin:', process.env.FRONT_URI);
 
@@ -39,7 +40,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/spotlight', spotlightRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/testimonials', testimonialRoutes);
-app.use('/api/admin', authRoutes);
+app.use(`/api/${adminRoute}`, authRoutes);
 app.use('/api/metadata', metadataRoutes);
 
 app.listen(PORT, () => {

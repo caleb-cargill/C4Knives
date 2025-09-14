@@ -26,6 +26,8 @@ import MetadataSettings from './pages/admin/MetadataSettings';
 // CSS
 import './App.css';
 
+const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
+
 function App() {
   return (
     <AuthProvider>
@@ -39,18 +41,18 @@ function App() {
               <Route path="/vault/:id" element={<ProductDetailPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route path={`/${adminRoute}/login`} element={<LoginPage />} />
               
               {/* Admin Routes - Protected */}
               <Route element={<PrivateRoute />}>
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/admin/vault" element={<AdminProductsPage />} />
-                <Route path="/admin/vault/edit/:id" element={<EditProductPage />} />
-                <Route path="/admin/vault/new" element={<AddProductPage />} />
-                <Route path="/admin/messages" element={<MessagesPage />} />
-                <Route path="/admin/spotlight" element={<SpotlightManagement />} />
-                <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
-                <Route path="/admin/metadata" element={<MetadataSettings />} />
+                <Route path={`/${adminRoute}`} element={<AdminDashboard />} />
+                <Route path={`/${adminRoute}/vault`} element={<AdminProductsPage />} />
+                <Route path={`/${adminRoute}/vault/edit/:id`} element={<EditProductPage />} />
+                <Route path={`/${adminRoute}/vault/new`} element={<AddProductPage />} />
+                <Route path={`/${adminRoute}/messages`} element={<MessagesPage />} />
+                <Route path={`/${adminRoute}/spotlight`} element={<SpotlightManagement />} />
+                <Route path={`/${adminRoute}/testimonials`} element={<TestimonialsAdmin />} />
+                <Route path={`/${adminRoute}/metadata`} element={<MetadataSettings />} />
               </Route>
             </Routes>
           </main>

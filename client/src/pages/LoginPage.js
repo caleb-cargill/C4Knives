@@ -14,13 +14,14 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
 
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin');
+      navigate(`/${adminRoute}`);
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, adminRoute]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

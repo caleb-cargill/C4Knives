@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { spotlightService, productService, testimonialService, metadataService } from '../utils/api';
-import Product from '../components/Product';
 
 const HomePage = () => {
   const [spotlight, setSpotlight] = useState(null);
@@ -80,17 +79,6 @@ const HomePage = () => {
     setFilteredTestimonials(filtered);
     setCurrentTestimonialIndex(0);
   }, [searchQuery, testimonials]);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
 
   // Handle manual navigation
   const goToNextTestimonial = () => {
@@ -198,18 +186,6 @@ const HomePage = () => {
                     alt={spotlight.title} 
                     className="rounded-lg shadow-lg object-cover w-full h-96"
                   />
-                )}
-                {spotlight.videoUrl && (
-                  <div className="relative pt-56.25 rounded-lg overflow-hidden shadow-lg">
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full"
-                      src={spotlight.videoUrl}
-                      title={spotlight.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
                 )}
               </motion.div>
 

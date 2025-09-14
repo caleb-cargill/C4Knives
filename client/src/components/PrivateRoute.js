@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 
 const PrivateRoute = () => {
   const { isAuthenticated, loading } = useAuth();
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
 
   // Show loading spinner while checking authentication
   if (loading) {
@@ -15,7 +16,7 @@ const PrivateRoute = () => {
   }
 
   // Redirect to login if not authenticated
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to={`${adminRoute}/login`} />;
 };
 
 export default PrivateRoute; 

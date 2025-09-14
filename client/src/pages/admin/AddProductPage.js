@@ -14,7 +14,7 @@ const AddProductPage = () => {
   });
   const [error, setError] = useState(null);
   const [newTag, setNewTag] = useState('');
-
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
   const images = process.env.REACT_APP_R2_URL;
 
   const handleChange = (e) => {
@@ -58,7 +58,7 @@ const AddProductPage = () => {
       };
 
       await productService.create(productData);
-      navigate('/admin/products');
+      navigate(`/${adminRoute}/products`);
     } catch (err) {
       console.error('Error creating product:', err);
       setError('Failed to create product. Please try again.');
@@ -200,7 +200,7 @@ const AddProductPage = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate('/admin/products')}
+              onClick={() => navigate(`/${adminRoute}/products`)}
               className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
             >
               Cancel

@@ -3,6 +3,8 @@ const router = express.Router();
 const Spotlight = require('../models/Spotlight');
 const { authMiddleware } = require('../middleware/auth');
 
+const adminRoute = process.env.ADMIN_API_ROUTE;
+
 // @route   GET api/spotlight
 // @desc    Get current spotlight
 // @access  Public
@@ -26,7 +28,7 @@ router.get('/', async (req, res) => {
 // @route   PUT api/spotlight
 // @desc    Update spotlight
 // @access  Private
-router.put('/', authMiddleware, async (req, res) => {
+router.put(`/${adminRoute}/`, authMiddleware, async (req, res) => {
   try {
     const { title, description, imageUrl, videoUrl } = req.body;
     

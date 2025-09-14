@@ -14,7 +14,8 @@ const SpotlightManagement = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
+  const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
+  
   useEffect(() => {
     const fetchSpotlight = async () => {
       try {
@@ -67,7 +68,7 @@ const SpotlightManagement = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center mb-8">
         <button
-          onClick={() => navigate('/admin')}
+          onClick={() => navigate(`/${adminRoute}`)}
           className="mr-4 text-muted hover:text-text"
         >
           <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
