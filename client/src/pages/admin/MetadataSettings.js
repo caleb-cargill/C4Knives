@@ -5,7 +5,6 @@ import { metadataService } from '../../utils/api';
 const MetadataSettings = () => {
   const [metadata, setMetadata] = useState({
     email: '',
-    phone: '',
     address: '',
     instagram: '',
     facebook: '',
@@ -33,14 +32,8 @@ const MetadataSettings = () => {
   }, []);
 
   const validateField = (name, value) => {
-    if (!value || !value.toString().trim()) {
-      return `${name.charAt(0).toUpperCase() + name.slice(1)} is required`;
-    }
     if (name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       return 'Please enter a valid email address';
-    }
-    if (name === 'phone' && !/^[\d\s\-\+\(\)]{10,}$/.test(value)) {
-      return 'Please enter a valid phone number';
     }
     if ((name === 'instagram' || name === 'facebook' || name === 'youtube') && value && !value.startsWith('http')) {
       return 'Please enter a valid URL starting with http:// or https://';
@@ -86,7 +79,7 @@ const MetadataSettings = () => {
 
     // Check if there are any errors
     if (Object.values(newValidationErrors).some(error => error)) {
-      setError('Please fix the validation errors before submitting');
+      setError(`Please fix the validation errors before submitting: ${Object.values(newValidationErrors)}`);
       return;
     }
 
@@ -152,28 +145,6 @@ const MetadataSettings = () => {
                 />
                 {validationErrors.email && (
                   <p className="text-red-500 text-sm mt-1">{validationErrors.email}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-muted mb-1">
-                  Phone Number <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={metadata.phone}
-                  onChange={handleInputChange}
-                  onBlur={handleBlur}
-                  required
-                  className={`w-full px-4 py-2 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary text-text ${
-                    validationErrors.phone ? 'border-red-500' : ''
-                  }`}
-                  placeholder="(555) 123-4567"
-                />
-                {validationErrors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{validationErrors.phone}</p>
                 )}
               </div>
 

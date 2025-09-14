@@ -15,7 +15,8 @@ const SpotlightManagement = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const adminRoute = process.env.REACT_APP_ADMIN_ROUTE;
-  
+  const images = process.env.REACT_APP_R2_URL;
+
   useEffect(() => {
     const fetchSpotlight = async () => {
       try {
@@ -195,7 +196,7 @@ const SpotlightManagement = () => {
               <div>
                 {spotlight.imageUrl && (
                   <img 
-                    src={spotlight.imageUrl} 
+                    src={`${images}${spotlight.imageUrl}`} 
                     alt={spotlight.title} 
                     className="rounded-lg shadow-lg object-cover w-full h-96"
                   />
