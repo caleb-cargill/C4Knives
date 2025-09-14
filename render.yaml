@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: my-react-app
+    env: static
+    buildCommand: npm run install-client && npm run build-client
+    staticPublishPath: build
+    redirects:
+      - source: /*
+        destination: /index.html
+        status: 200
