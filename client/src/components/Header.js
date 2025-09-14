@@ -115,7 +115,7 @@ const Header = () => {
             >
               Contact
             </Link>
-            {isAuthenticated ? (
+            {isAuthenticated && (
               <>
                 <Link 
                   to="/admin" 
@@ -131,14 +131,6 @@ const Header = () => {
                   Logout
                 </button>
               </>
-            ) : (
-              <Link 
-                to="/login" 
-                className={`${isActive('/login')} block py-2 transition-colors`}
-                onClick={closeMenu}
-              >
-                Admin Login
-              </Link>
             )}
           </div>
         </div>
