@@ -9,7 +9,8 @@ const SpotlightManagement = () => {
     title: '',
     description: '',
     imageUrl: '',
-    videoUrl: ''
+    videoUrl: '',
+    productId: ''
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -130,10 +131,10 @@ const SpotlightManagement = () => {
 
         <div className="mb-6">
           <label htmlFor="imageUrl" className="block text-sm font-medium text-text mb-2">
-            Image URL
+            Image Path
           </label>
           <input
-            type="url"
+            type="text"
             id="imageUrl"
             name="imageUrl"
             value={spotlight.imageUrl}
@@ -163,7 +164,7 @@ const SpotlightManagement = () => {
             Product ID
           </label>
           <input
-            type="url"
+            type="text"
             id="productId"
             name="productId"
             value={spotlight.productId}
@@ -200,18 +201,6 @@ const SpotlightManagement = () => {
                     alt={spotlight.title} 
                     className="rounded-lg shadow-lg object-cover w-full h-96"
                   />
-                )}
-                {spotlight.videoUrl && (
-                  <div className="relative pt-56.25 rounded-lg overflow-hidden shadow-lg mt-4">
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full"
-                      src={spotlight.videoUrl}
-                      title={spotlight.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
                 )}
               </div>
               <div>

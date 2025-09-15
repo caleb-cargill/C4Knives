@@ -27,7 +27,7 @@ api.interceptors.request.use(
 // API services for products
 export const productService = {
   getAll: () => api.get('/products'),
-  getById: (id) => api.get(`/products/${adminApiRoute}/${id}`),
+  getById: (id) => api.get(`/products/${id}`),
   create: (data) => api.post(`/products/${adminApiRoute}`, data),
   update: (id, data) => api.put(`/products/${adminApiRoute}/${id}`, data),
   delete: (id) => api.delete(`/products/${adminApiRoute}/${id}`),

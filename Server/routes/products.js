@@ -23,6 +23,8 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/:id', async (req, res) => {
   try {
+    console.log(`Getting: ${req.params.id}`);
+
     const product = await Product.findById(req.params.id);
     
     if (!product) {
@@ -65,8 +67,11 @@ router.post(`/${adminRoute}/`, authMiddleware, async (req, res) => {
 // @route   PUT api/products/:id
 // @desc    Update a product
 // @access  Private
-router.put(`${adminRoute}/:id`, authMiddleware, async (req, res) => {
+router.put(`/${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
+
+    console.log(`Updating: ${req.params.id}`);
+
     const product = await Product.findById(req.params.id);
     
     if (!product) {
@@ -96,7 +101,7 @@ router.put(`${adminRoute}/:id`, authMiddleware, async (req, res) => {
 // @route   DELETE api/products/:id
 // @desc    Delete a product
 // @access  Private
-router.delete(`${adminRoute}/:id`, authMiddleware, async (req, res) => {
+router.delete(`/${adminRoute}/:id`, authMiddleware, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     

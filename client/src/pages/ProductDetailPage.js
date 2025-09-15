@@ -36,7 +36,7 @@ const ProductDetailPage = () => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
         await productService.delete(id);
-        navigate('/products');
+        navigate('/vault');
       } catch (err) {
         console.error('Error deleting product:', err);
         alert('Failed to delete product. Please try again.');
@@ -61,10 +61,10 @@ const ProductDetailPage = () => {
           <h1 className="text-2xl font-bold text-red-600 mb-4">Product Not Found</h1>
           <p className="text-gray-700 mb-6">{error || 'The requested product could not be found.'}</p>
           <Link 
-            to="/products" 
+            to="/vault" 
             className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors inline-block"
           >
-            Back to Products
+            Back to Vault
           </Link>
         </div>
       </div>

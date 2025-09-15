@@ -8,7 +8,6 @@ import { metadataService } from '../utils/api';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [metadata, setMetadata] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMetadata = async () => {
@@ -19,7 +18,6 @@ const Footer = () => {
         setMetadata(response.data);
       } catch (err) {
         console.error('Error fetching metadata:', err);
-        setError('Failed to load contact information');
       }
     };
     fetchMetadata();
@@ -32,8 +30,8 @@ const Footer = () => {
           <div className="lg:w-1/3">
             <h3 className="text-xl font-bold mb-4 text-primary">C4 Knives</h3>
             <p className="text-muted mb-4">
-              Premium handcrafted knives made with the finest materials. 
-              Each knife is a unique piece of functional art.
+              Handcrafted knives made with a variety of materials. 
+              Unique fixed blades and folding knives.
             </p>
             <p className="text-muted">
               &copy; {currentYear} C4 Knives. All rights reserved.

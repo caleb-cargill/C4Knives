@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 // @access  Private
 router.put(`/${adminRoute}/`, authMiddleware, async (req, res) => {
   try {
-    const { title, description, imageUrl, videoUrl } = req.body;
+    const { title, description, imageUrl, videoUrl, productId } = req.body;
     
     // Find current spotlight, or create if doesn't exist
     let spotlight = await Spotlight.findOne().sort({ updatedAt: -1 });
@@ -41,6 +41,7 @@ router.put(`/${adminRoute}/`, authMiddleware, async (req, res) => {
       spotlight.description = description;
       spotlight.imageUrl = imageUrl;
       spotlight.videoUrl = videoUrl;
+      spotlight.productId = productId;
       spotlight.updatedAt = Date.now();
     } else {
       // Create new spotlight

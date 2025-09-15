@@ -58,7 +58,7 @@ const AddProductPage = () => {
       };
 
       await productService.create(productData);
-      navigate(`/${adminRoute}/products`);
+      navigate(`/${adminRoute}/vault`);
     } catch (err) {
       console.error('Error creating product:', err);
       setError('Failed to create product. Please try again.');
@@ -200,7 +200,7 @@ const AddProductPage = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate(`/${adminRoute}/products`)}
+              onClick={() => navigate(`/${adminRoute}/vault`)}
               className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
             >
               Cancel

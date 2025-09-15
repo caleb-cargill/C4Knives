@@ -246,7 +246,7 @@ const EditProductPage = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate(`/${adminRoute}/products`)}
+              onClick={() => navigate(`/${adminRoute}/vault`)}
               className="bg-secondary hover:bg-gray-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
             >
               Cancel
