@@ -139,6 +139,12 @@ const HomePage = () => {
             </Link>
           </motion.div>
         </div>
+
+        <div className="absolute top-4 right-4">
+          <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full shadow-lg text-sm font-semibold hover:scale-105 transition-transform duration-200">
+            Proudly Veteran Owned & Operated
+          </div>
+        </div>
       </section>
 
       {/* Total Knives Section */}

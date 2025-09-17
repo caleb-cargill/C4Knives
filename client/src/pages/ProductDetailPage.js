@@ -95,6 +95,13 @@ const ProductDetailPage = () => {
             className="p-8"
           >
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+
+            {product.isCurrentlyAvailable ? (
+              <span className="bg-olive text-gray-200 text-xs px-2 py-1 rounded">Currently Available</span>
+            ) : (
+              <span className="bg-complement text-gray-200 text-xs px-2 py-1 rounded">SOLD</span>
+            )}
+            
             <div className="text-2xl font-bold text-primary mb-6">
               ${product.price.toFixed(2)}
             </div>

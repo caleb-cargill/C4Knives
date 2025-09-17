@@ -40,8 +40,10 @@ const Product = ({ product }) => {
                     ))}
                   </div>
                 )}
-            {product.isCurrentlyAvailable && (
+            {product.isCurrentlyAvailable ? (
               <span className="bg-olive text-gray-200 text-xs px-2 py-1 rounded">Currently Available</span>
+            ) : (
+              <span className="bg-complement text-gray-200 text-xs px-2 py-1 rounded">SOLD</span>
             )}
             <div className="flex justify-between items-center">
                 <span className="text-highlight font-bold">${product.price.toFixed(2)}</span>
